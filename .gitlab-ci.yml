@@ -1,0 +1,20 @@
+stages:
+    - build
+    - test
+image: java:8-jdk
+
+maven-build:
+    image: maven:3-jdk-8
+    stage: build
+    script: "mvn package"
+maven-test:
+    image: maven:3-jdk-8
+    stage: test
+    script: "mvn test"
+services: 
+    - 'mysql:latest'
+variables:
+    MYSQL_ROOT_PASSWORD: himanshu@27
+    MYSQL_HOST: localhost
+
+
